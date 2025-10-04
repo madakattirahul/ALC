@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <main className="flex-grow container mx-auto px-4 py-8">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/calculator/:id" element={<CalculatorPageWrapper />} />
+            <Route path="/:id" element={<CalculatorPageWrapper />} />
           </Routes>
         </main>
         <Footer />
