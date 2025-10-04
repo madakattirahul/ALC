@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CALCULATORS } from '../constants';
 import StructuredData from '../components/StructuredData';
 import Accordion from '../components/ui/Accordion';
 import type { CalculatorDef } from '../types';
+import AdSense from '../components/AdSense';
 
 const HomePage: React.FC = () => {
   const websiteSchema = {
@@ -87,29 +87,36 @@ const HomePage: React.FC = () => {
         <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
           Get instant, data-driven estimates for your personal injury or civil litigation case. Our suite of free, specialized calculators helps you understand potential settlement values, legal deadlines, attorney fees, and more, empowering you with information for your claim.
         </p>
+
+        {/* --- Ad Slot 1: Top of Page --- */}
+        <AdSense adSlot="1070397560" />
         
         <div className="space-y-16">
-          {sortedCategories.map(category => (
-            <section key={category} aria-labelledby={`${category}-heading`}>
-              <h2 
-                id={`${category}-heading`} 
-                className="text-3xl font-bold text-gray-800 mb-8 text-left border-b-2 border-gray-200 pb-2"
-              >
-                {category} Calculators
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {calculatorsByCategory[category].map(calc => (
-                  <Link 
-                    key={calc.id} 
-                    to={`/calculator/${calc.id}`}
-                    className="block p-6 bg-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left"
-                  >
-                    <h3 className="font-bold text-xl text-blue-700 mb-2">{calc.name}</h3>
-                    <p className="text-gray-600 text-sm">{calc.h1}</p>
-                  </Link>
-                ))}
-              </div>
-            </section>
+          {sortedCategories.map((category, index) => (
+            <React.Fragment key={category}>
+              <section aria-labelledby={`${category}-heading`}>
+                <h2 
+                  id={`${category}-heading`} 
+                  className="text-3xl font-bold text-gray-800 mb-8 text-left border-b-2 border-gray-200 pb-2"
+                >
+                  {category} Calculators
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {calculatorsByCategory[category].map(calc => (
+                    <Link 
+                      key={calc.id} 
+                      to={`/calculator/${calc.id}`}
+                      className="block p-6 bg-white rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-left"
+                    >
+                      <h3 className="font-bold text-xl text-blue-700 mb-2">{calc.name}</h3>
+                      <p className="text-gray-600 text-sm">{calc.h1}</p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+              {/* --- Ad Slot 2: In-Content (after the second category) --- */}
+              {index === 1 && <AdSense adSlot="1070397560" />}
+            </React.Fragment>
           ))}
         </div>
 
@@ -122,6 +129,9 @@ const HomePage: React.FC = () => {
             Disclaimer: These calculators are for informational purposes only and are not a substitute for professional legal advice.
           </p>
         </div>
+        
+        {/* --- Ad Slot 3: Bottom of Page --- */}
+        <AdSense adSlot="1070397560" />
 
         <section id="faq" className="mt-16 text-left">
           <div className="bg-gray-100 p-8 rounded-lg">

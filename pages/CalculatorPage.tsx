@@ -6,6 +6,7 @@ import { CALCULATORS } from '../constants';
 import StructuredData from '../components/StructuredData';
 import SocialShareButtons from '../components/SocialShareButtons';
 import Accordion from '../components/ui/Accordion';
+import AdSense from '../components/AdSense';
 
 interface CalculatorPageProps {
   calculator: CalculatorDef;
@@ -67,10 +68,16 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ calculator }) => {
         <header className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">{calculator.h1}</h1>
         </header>
+
+        {/* --- Ad Slot 1: Top of Page --- */}
+        <AdSense adSlot="1070397560" />
         
         <section id="calculator-widget" className="mb-12">
           <CalculatorWidget calculator={calculator} />
         </section>
+
+        {/* --- Ad Slot 2: In-Content --- */}
+        <AdSense adSlot="1070397560" />
         
         <section id="educational-content" aria-labelledby="educational-content-heading" className="bg-white p-8 rounded-lg shadow-md max-w-4xl mx-auto prose lg:prose-xl">
            <h2 id="educational-content-heading" className="sr-only">
@@ -106,6 +113,9 @@ const CalculatorPage: React.FC<CalculatorPageProps> = ({ calculator }) => {
             />
           </div>
         </section>
+
+        {/* --- Ad Slot 3: Bottom of Page --- */}
+        <AdSense adSlot="1070397560" />
 
         <section id="related-calculators" className="mt-16 text-center">
           <h2 className="text-3xl font-bold mb-6">Related Calculators</h2>

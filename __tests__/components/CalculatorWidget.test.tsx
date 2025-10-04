@@ -1,3 +1,4 @@
+
 // FIX: Add imports for Jest globals
 import { describe, it, expect, jest } from '@jest/globals';
 import React from 'react';
